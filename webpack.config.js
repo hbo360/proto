@@ -41,7 +41,7 @@ module.exports = {
       template: __dirname + '/src/templates/tmpl-index.html'
   }),
   new ExtractTextPlugin({
-    filename: "app.css",
+    filename: "styles/app.css",
     disable: false,
     allChunks: true
   })
