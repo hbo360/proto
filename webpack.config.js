@@ -3,7 +3,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var path = require('path');
 
 module.exports = {
-  entry: './src/app.js',
+  entry: './src/index.js',
   output: {
     path: path.resolve(__dirname,'dist'),
     filename: 'app.bundle.js'
@@ -29,7 +29,8 @@ module.exports = {
     contentBase: path.join(__dirname, 'dist'),
     compress: true,
     port:9000,
-    stats: 'errors-only'
+    stats: 'errors-only',
+    historyApiFallback: true
   },
   plugins : [
     new HtmlWebpackPlugin({
