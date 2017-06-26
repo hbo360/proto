@@ -8,11 +8,20 @@ import SigninPage from './components/SigninPage';
 const Router = () => (
   <BrowserRouter>
     <Switch>
-      <Route exact path="/" component={App} />
+      <Route exact path="/" component={App} onEnter={requireAuth} />
       <Route exact path="/hello" component={Hello} />
       <Route exact path="/signin" component={SigninPage} />
     </Switch>
   </BrowserRouter>
 )
+
+function requireAuth(nextState, replace) {
+  if (!sessionStorage.jwt) {
+    replace({
+      pathname: '/signin',
+      state: { nextPathname: nextState.location.pathname }
+    })
+  }
+}
 
 export default Router;
